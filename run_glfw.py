@@ -33,7 +33,7 @@ def matrixForOpenVrMatrix(mat):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='COLMAPSLAM argument parser')
+    parser = argparse.ArgumentParser(description='Pytorch3D Viewer argument parser')
     parser.add_argument('--actor',
                          type=str,
                          help='actor type',
@@ -67,13 +67,6 @@ def main():
     else:
         print(f"Error: Actor [{args.actor}] is not implemented")
 
-    # actor = ColorCubeActor()
-    # actor = Pytorch3DMeshActor(single_pass=False)
-    # actor = Pytorch3DPointActor(single_pass=True)
-    # actor = Pytorch3DMeshActor(single_pass=single_pass)
-    # actor = Pytorch3DPointActor(single_pass=single_pass)
-    # actor = Pytorch3DVolumeActor(single_pass=single_pass)
-    # actor = RemoteActorClient(host_ip="192.168.137.1", port=9999)
     if args.actor == 'cube':
         renderer = OpenVrGlRenderer(actor)
     else:

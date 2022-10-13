@@ -18,7 +18,7 @@ from pytorch3d.renderer import (
     AlphaCompositor,
 )
 import time
-
+import argparse
 # Setup
 if torch.cuda.is_available():
     device = torch.device("cuda:0")
@@ -166,9 +166,16 @@ class Pytorch3DPointActor(object):
 
 
 def main():
+    parser = argparse.ArgumentParser(description='Pytorch3D point actor argument parser')
+    parser.add_argument('--port',
+                         type=int,
+                         help='port (required by RemoteActorClient)',
+                         default=9999)
+    args = parser.parse_args()
+
     actor = Pytorch3DPointActor()
     actor.init_gl(1800,1800) # fake image size
-    actor.run_as_server(port=9999)
+    actor.run_as_server(port=args.port)
 
 
 if __name__ == '__main__':

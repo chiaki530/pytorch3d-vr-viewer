@@ -19,6 +19,7 @@ from pytorch3d.renderer import (
     ray_bundle_to_ray_points,
 )
 import time
+import argparse
 from numpysocket import NumpySocket
 
 # Setup
@@ -428,9 +429,16 @@ class Pytorch3DImplicitActor(object):
                     pass
 
 def main():
+    parser = argparse.ArgumentParser(description='Pytorch3D implicit actor argument parser')
+    parser.add_argument('--port',
+                         type=int,
+                         help='port (required by RemoteActorClient)',
+                         default=9999)
     actor = Pytorch3DImplicitActor()
+    args = parser.parse_args()
+
     actor.init_gl(1800,1800) # fake image size
-    actor.run_as_server(port=9999)
+    actor.run_as_server(port=args.port)
 
 
 if __name__ == '__main__':

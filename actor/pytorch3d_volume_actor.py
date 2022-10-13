@@ -17,6 +17,7 @@ from pytorch3d.renderer import (
     EmissionAbsorptionRaymarcher
 )
 import time
+import argparse
 from numpysocket import NumpySocket
 
 # Setup
@@ -192,9 +193,16 @@ class Pytorch3DVolumeActor(object):
                     pass
 
 def main():
+    parser = argparse.ArgumentParser(description='Pytorch3D volume actor argument parser')
+    parser.add_argument('--port',
+                         type=int,
+                         help='port (required by RemoteActorClient)',
+                         default=9999)
+    args = parser.parse_args()
+
     actor = Pytorch3DVolumeActor()
     actor.init_gl(1800,1800) # fake image size
-    actor.run_as_server(port=9999)
+    actor.run_as_server(port=args.port)
 
 
 if __name__ == '__main__':

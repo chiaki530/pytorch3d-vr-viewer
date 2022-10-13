@@ -14,8 +14,9 @@ The pipeline contains the following steps:
 - Given the camera parameters and poses, render views via Pytorch3D.
 - Submit the left/right views to HMD via OpenVR.
 
+<p align="center">
 <img title="pipeline" alt="Alt text" src="images/pipeline.png" width="400">
-
+</p>
 ## Installation
 Install [SteamVR](https://www.steamvr.com/zh-cn/) and [Oculus App](https://www.meta.com/ch/en/quest/setup/) which are needed by OpenVR applications.
 
